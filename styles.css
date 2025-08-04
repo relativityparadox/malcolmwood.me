@@ -1,0 +1,243 @@
+// COLOR SCHEME
+
+// Almost black #0c161a   Background, text
+// Almost       #152a33   Hover highlights
+// almost black
+// Medium-dark  #08323f   Footer, inputs
+// Medium       #054459   Header outline
+// Medium       #05445999 Header
+// (translucent)
+// Bright       #42d1ff   Link hover, hero
+//                        background
+// Light        #5191a6   Secondary text
+// Red          #eb4034   Accents
+// White        #ffffff   Text
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@keyframes frame {
+  from {
+    margin: 60px 20vw auto 20vw;
+    border-radius: 30px;
+    height: 60vw;
+  }
+  to {
+    margin: 0;
+    height: 100vh;
+    border-radius: 0;
+  }
+}
+
+html,
+body {
+  margin: 0;
+  background-color: #0c161a;
+  color: #fff;
+  font-family: Montserrat, sans-serif;
+}
+
+.top {
+  font-size: 1px;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: calc(100% - 60px);
+  display: flex;
+  justify-content: space-evenly;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #054459;
+  background-color: #05445999;
+  backdrop-filter: blur(30px);
+  transition: padding 0.6s, margin 0.6s, border-radius 0.6s;
+}
+
+.navbar:hover {
+  margin: 10px;
+  padding: 20px;
+  border-radius: 17px;
+}
+
+.navbar a {
+  font-size: 1em;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.2s
+}
+
+.navbar a:hover {
+  color: #42d1ff;
+}
+
+.navbar a:active {
+  color: #eb4034;
+}
+
+h1 {
+  margin: 0;
+  padding-top: 70px;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 0.8em;
+  text-align: center;
+  color: #5191a6;
+}
+
+.text {
+  padding-top: 10px;
+}
+
+a {
+  color: #42d1ff;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: #fff;
+}
+
+.white-link {
+  color: #fff;
+}
+
+.white-link:hover {
+  color: #42d1ff;
+}
+
+.content {
+  width: 70vw;
+  margin: 0 auto;
+}
+
+.hero {
+  height: 100vh;
+  background-color: #08323f;
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-title {
+  padding: 35vh 0;
+  font-size: clamp(2em, 10vh, 4em);
+  font-weight: 500;
+  text-shadow: 0 0 5vh #0c161a;
+}
+
+.photos-videos {
+  text-align: center;
+}
+
+.fun-things {
+  margin: 10px;
+  height: 189px;
+  border-radius: 6px;
+}
+
+.hobbies-table {
+  width: 100%;
+}
+
+.hobbies-table td {
+  width: 25%;
+  padding: 10px;
+  border-radius: 10px;
+  transition: background-color 0.2s;
+}
+
+.hobbies-table td:hover {
+  background-color: #152a33;
+  cursor: default;
+}
+
+.favorites-table {
+  width: 100%;
+  margin-top: 30px;
+  gap: 20px;
+}
+
+.favorites-table td {
+  width: calc(100% / 3);
+  text-align: center;
+}
+
+.favorites-cover {
+  object-fit: cover;
+  width: 192px;
+  height: 288px;
+  border-radius: 6px;
+}
+
+.faq div.text {
+  margin-top: -25px;
+}
+
+.contact-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 50px;
+}
+
+input,
+textarea {
+  margin-top: 20px;
+  padding: 10px;
+  font-family: Montserrat, sans-serif;
+  font-size: 0.9em;
+  width: 100%;
+  border: 1px solid #054459;
+  border-radius: 10px;
+  background-color: #08323f;
+  color: #fff;
+  transition: background-color 0.2s, border-radius 0.2s;
+}
+
+input:focus,
+textarea:focus {
+  border-radius: 0;
+  background-color: #0c161a;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #5191a6;
+}
+
+.submit {
+  grid-column: 1 / span 2;
+  margin: 20px 0 0 auto;
+  padding: 8px;
+  width: 200px;
+  border: 1px solid #054459;
+  border-radius: 10px;
+  background-color: #42d1ff;
+  font-family: Montserrat, sans-serif;
+  font-size: 0.9em;
+  color: #0c161a;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.submit:hover {
+  background-color: #fff;
+  color: #054459;
+  cursor: pointer;
+}
+
+.submit:active {
+  background-color: #eb4034;
+  color: #0c161a;
+}
+
+.footer {
+  margin-top: 40px;
+  padding: 20px;
+  border-top: 1px solid #054459;
+  background-color: #08323f;
+  font-size: 0.8em;
+  text-align: center;
+}

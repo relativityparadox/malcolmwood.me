@@ -7,7 +7,7 @@ Medium-dark  #08323f   Footer, inputs
 Medium       #054459   Header outline
 Medium       #05445999 Header
 (translucent)
-Bright       #42d1ff   Link hover, hero background
+Bright       #42d1ff   Links, hero background
 Light        #5191a6   Secondary text
 Red          #eb4034   Accents
 White        #ffffff   Text */
@@ -107,13 +107,13 @@ a.white-link {
   background-color: #08323f;
   background-size: cover;
   background-position: center;
-  text-align: center;
 }
 
 .hero-title {
   font-size: clamp(2em, 10vh, 4em);
   font-weight: 500;
   text-shadow: 0 0 5vh #0c161a;
+  text-align: center;
 }
 
 .contact-form {

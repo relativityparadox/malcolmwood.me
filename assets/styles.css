@@ -124,12 +124,13 @@ a.white-link {
     position: absolute;
     border-radius: 50%;
     z-index: -1;
-    pointer-events: none;
+    pointer-events: auto;
+    transition: transform 0.4s ease;
   }
 
-  100% {
-    transform: translate(var(--x), var(--y));
-  }
+.bouncy-circle:hover {
+  transform: scale(1.5); /* Grows by 50% */
+  z-index: 1; /* Optional: bring to front while hovered */
 }
 
 .contact-form {

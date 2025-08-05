@@ -8,7 +8,6 @@
 </head>
 
 <body>
-
   <div id="universal-navbar"></div>
 
   <div class="hero">
@@ -24,9 +23,48 @@
   </div>
 
   <div id="universal-footer"></div>
-
 </body>
 
 <script src="/assets/script.js"></script>
+<script>
+
+  const circles = [
+    { size: 150, color: '#9be64c' },
+    { size: 100, color: '#3af2ec' },
+    { size: 200, color: '#f5073b' }
+  ];
+
+  const hero = document.getElementById('hero');
+  hero.style.position = 'relative';
+
+  circles.forEach((circle, index) => {
+    const el = document.createElement('div');
+    el.classList.add('bouncy-circle');
+    el.style.width = `${circle.size}px`;
+    el.style.height = `${circle.size}px`;
+    el.style.backgroundColor = circle.color;
+
+    
+    const maxX = window.innerWidth - circle.size;
+    const maxY = window.innerHeight - circle.size;
+    const startX = Math.random() * maxX;
+    const startY = Math.random() * maxY;
+
+    el.style.left = `${startX}px`;
+    el.style.top = `${startY}px`;
+
+    
+    const deltaX = (Math.random() - 0.5) * 400;
+    const deltaY = (Math.random() - 0.5) * 400;
+    el.style.setProperty('--x', `${deltaX}px`);
+    el.style.setProperty('--y', `${deltaY}px`);
+
+    
+    el.style.animationDuration = `${18 + Math.random() * 6}s`;
+    el.style.animationDelay = `${Math.random() * 5}s`;
+
+    hero.appendChild(el);
+  });
+</script>
 
 </html>

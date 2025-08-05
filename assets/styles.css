@@ -104,7 +104,8 @@ a.white-link {
   display: flex;
   align-items: center;
   height: 100vh;
-  background-color: #08323f;
+  background-color: #08323fbb;
+  backdrop-filter: blur(100px);
   background-size: cover;
   background-position: center;
 }
@@ -114,6 +115,25 @@ a.white-link {
   font-weight: 500;
   text-shadow: 0 0 5vh #0c161a;
   text-align: center;
+}
+
+.bouncy-circle {
+  position: absolute;
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0.5;
+  pointer-events: none;
+  animation: float 20s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(var(--x), var(--y));
+  }
 }
 
 .contact-form {

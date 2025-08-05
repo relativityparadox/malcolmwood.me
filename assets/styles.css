@@ -129,8 +129,7 @@ a.white-link {
   }
 
 .bouncy-circle:hover {
-  transform: scale(1.5); /* Grows by 50% */
-  z-index: 1; /* Optional: bring to front while hovered */
+  transform: scale(1.5);
 }
 
 .contact-form {

@@ -1,32 +1,17 @@
-// COLOR SCHEME
+/* COLOR SCHEME
 
-// Almost black #0c161a   Background, text
-// Almost       #152a33   Hover highlights
-// almost black
-// Medium-dark  #08323f   Footer, inputs
-// Medium       #054459   Header outline
-// Medium       #05445999 Header
-// (translucent)
-// Bright       #42d1ff   Link hover, hero
-//                        background
-// Light        #5191a6   Secondary text
-// Red          #eb4034   Accents
-// White        #ffffff   Text
+Almost black #0c161a   Background, text
+Almost       #152a33   Hover highlights
+almost black
+Medium-dark  #08323f   Footer, inputs
+Medium       #054459   Header outline
+Medium       #05445999 Header
+(translucent)
+Bright       #42d1ff   Link hover, hero background
+Light        #5191a6   Secondary text
+Red          #eb4034   Accents
+White        #ffffff   Text */
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
-@keyframes frame {
-  from {
-    margin: 60px 20vw auto 20vw;
-    border-radius: 30px;
-    height: 60vw;
-  }
-  to {
-    margin: 0;
-    height: 100vh;
-    border-radius: 0;
-  }
-}
 
 html,
 body {

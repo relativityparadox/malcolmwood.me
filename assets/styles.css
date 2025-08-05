@@ -102,8 +102,11 @@ a.white-link {
 }
 
 .hero {
+  position: relative;
   display: flex;
+  overflow: hidden;
   align-items: center;
+  justify-content: center;
   height: 100vh;
   background-color: #08323fbb;
   backdrop-filter: blur(100px);
@@ -115,7 +118,6 @@ a.white-link {
   font-size: clamp(2em, 10vh, 4em);
   font-weight: 500;
   text-shadow: 0 0 5vh #0c161a;
-  text-align: center;
 }
 
 .bouncy-circle {

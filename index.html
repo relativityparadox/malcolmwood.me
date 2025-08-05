@@ -26,45 +26,71 @@
   <div id="universal-footer"></div>
 </body>
 
-<script src="/assets/script.js"></script>
 <script>
+  const hero = document.getElementById('hero');
 
   const circles = [
-    { size: 150, color: '#9be64c' },
-    { size: 100, color: '#3af2ec' },
-    { size: 200, color: '#f5073b' }
+    { size: 150, color: 'rgb(255, 100, 100)' },
+    { size: 100, color: 'rgb(100, 255, 200)' },
+    { size: 200, color: 'rgb(200, 150, 255)' }
   ];
 
-  const hero = document.getElementById('hero');
-  hero.style.position = 'relative';
+  const bouncingCircles = [];
 
-  circles.forEach((circle, index) => {
+  circles.forEach(circle => {
     const el = document.createElement('div');
     el.classList.add('bouncy-circle');
     el.style.width = `${circle.size}px`;
     el.style.height = `${circle.size}px`;
     el.style.backgroundColor = circle.color;
 
-    
-    const maxX = window.innerWidth - circle.size;
-    const maxY = window.innerHeight - circle.size;
-    const startX = Math.random() * maxX;
-    const startY = Math.random() * maxY;
+    // Random start position within hero
+    const pos = {
+      x: Math.random() * (hero.clientWidth - circle.size),
+      y: Math.random() * (hero.clientHeight - circle.size)
+    };
 
-    el.style.left = `${startX}px`;
-    el.style.top = `${startY}px`;
+    // Random velocity
+    const velocity = {
+      x: (Math.random() - 0.5) * 2.5, // speed in px/frame
+      y: (Math.random() - 0.5) * 2.5
+    };
 
-    
-    const deltaX = (Math.random() - 0.5) * 1000;
-    const deltaY = (Math.random() - 0.5) * 1000;
-    el.style.setProperty('--x', `${deltaX}px`);
-    el.style.setProperty('--y', `${deltaY}px`);
-
-    
-    el.style.animationDuration = `${18 + Math.random() * 6}s`;
+    el.style.left = `${pos.x}px`;
+    el.style.top = `${pos.y}px`;
 
     hero.appendChild(el);
+    bouncingCircles.push({ el, pos, velocity, size: circle.size });
   });
+
+  function animate() {
+    bouncingCircles.forEach(obj => {
+      const { el, pos, velocity, size } = obj;
+
+      pos.x += velocity.x;
+      pos.y += velocity.y;
+
+      // Bounce on X edges
+      if (pos.x <= 0 || pos.x + size >= hero.clientWidth) {
+        velocity.x *= -1;
+        pos.x = Math.max(0, Math.min(pos.x, hero.clientWidth - size));
+      }
+
+      // Bounce on Y edges
+      if (pos.y <= 0 || pos.y + size >= hero.clientHeight) {
+        velocity.y *= -1;
+        pos.y = Math.max(0, Math.min(pos.y, hero.clientHeight - size));
+      }
+
+      el.style.left = `${pos.x}px`;
+      el.style.top = `${pos.y}px`;
+    });
+
+    requestAnimationFrame(animate);
+  }
+
+  animate(); // Start the animation
 </script>
+<script src="/assets/script.js"></script>
 
 </html>

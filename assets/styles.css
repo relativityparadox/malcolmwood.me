@@ -121,16 +121,10 @@ a.white-link {
 }
 
 .bouncy-circle {
-  position: absolute;
-  border-radius: 50%;
-  z-index: -1000;
-  pointer-events: none;
-  animation: float 20s ease-in-out infinite alternate;
-}
-
-@keyframes float {
-  0% {
-    transform: translate(0, 0);
+    position: absolute;
+    border-radius: 50%;
+    z-index: -1;
+    pointer-events: none;
   }
 
   100% {

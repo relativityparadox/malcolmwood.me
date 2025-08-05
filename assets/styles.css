@@ -87,7 +87,7 @@ a:hover {
   color: #fff;
 }
 
-.white-link {
+a.white-link {
   color: #fff;
 }
 
@@ -101,6 +101,8 @@ a:hover {
 }
 
 .hero {
+  display: flex;
+  align-items: center;
   height: 100vh;
   background-color: #08323f;
   background-size: cover;
@@ -108,58 +110,9 @@ a:hover {
 }
 
 .hero-title {
-  padding: 35vh 0;
   font-size: clamp(2em, 10vh, 4em);
   font-weight: 500;
   text-shadow: 0 0 5vh #0c161a;
-}
-
-.photos-videos {
-  text-align: center;
-}
-
-.fun-things {
-  margin: 10px;
-  height: 189px;
-  border-radius: 6px;
-}
-
-.hobbies-table {
-  width: 100%;
-}
-
-.hobbies-table td {
-  width: 25%;
-  padding: 10px;
-  border-radius: 10px;
-  transition: background-color 0.2s;
-}
-
-.hobbies-table td:hover {
-  background-color: #152a33;
-  cursor: default;
-}
-
-.favorites-table {
-  width: 100%;
-  margin-top: 30px;
-  gap: 20px;
-}
-
-.favorites-table td {
-  width: calc(100% / 3);
-  text-align: center;
-}
-
-.favorites-cover {
-  object-fit: cover;
-  width: 192px;
-  height: 288px;
-  border-radius: 6px;
-}
-
-.faq div.text {
-  margin-top: -25px;
 }
 
 .contact-form {

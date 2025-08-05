@@ -34,5 +34,5 @@ async function importDiv(id, filePath) {
 
 importLinks('/assets/universal-data.html');
 
-importDiv("universal-navbar", "/universal-navbar.html");
-importDiv("universal-footer", "/universal-footer.html");
+importDiv("universal-navbar", "/assets/universal-navbar.html");
+importDiv("universal-footer", "/assets/universal-footer.html");

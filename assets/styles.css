@@ -103,12 +103,13 @@ a.white-link {
 
 .hero {
   position: relative;
+  z-index: 1;
   display: flex;
   overflow: hidden;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #08323fbb;
+  background-color: #08323fb7;
   backdrop-filter: blur(100px);
   background-size: cover;
   background-position: center;

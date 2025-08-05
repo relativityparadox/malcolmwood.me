@@ -103,7 +103,7 @@ a.white-link {
 
 .hero {
   position: relative;
-  z-index: 1;
+  z-index: 0;
   display: flex;
   overflow: hidden;
   align-items: center;

@@ -100,6 +100,7 @@ a.white-link {
 }
 
 main {
+  padding-bottom: 40px;
   background-color: #0c161a;
 }
 
@@ -117,7 +118,7 @@ main, * {
   position: relative;
   z-index: 0;
   display: flex;
-  margin-top: -19px;
+  margin-top: 20px;
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -213,7 +214,6 @@ textarea::placeholder {
 }
 
 .footer {
-  margin-top: 40px;
   padding: 20px;
   border-top: 1px solid #054459;
   background-color: #08323f;

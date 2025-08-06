@@ -104,6 +104,7 @@ main {
 }
 
 main, * {
+  position: relative;
   z-index: 0;
 }
 
@@ -116,13 +117,14 @@ main, * {
   position: relative;
   z-index: 0;
   display: flex;
-  margin-top: -10px;
+  margin-top: -19px;
   align-items: center;
   justify-content: center;
   text-align: center;
   height: 100vh;
   background-color: #08323f45;
   backdrop-filter: blur(100px);
+  pointer-events: none;
 }
 
 .hero-title {

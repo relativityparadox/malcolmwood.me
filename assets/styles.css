@@ -110,10 +110,8 @@ a.white-link {
   justify-content: center;
   text-align: center;
   height: 100vh;
-  background-color: #08323f44;
+  background-color: #08323f45;
   backdrop-filter: blur(100px);
-  background-size: cover;
-  background-position: center;
 }
 
 .hero-title {

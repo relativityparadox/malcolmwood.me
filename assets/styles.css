@@ -118,7 +118,7 @@ main, * {
   position: relative;
   z-index: 0;
   display: flex;
-  margin-top: 20px;
+  margin-top: -20px;
   align-items: center;
   justify-content: center;
   text-align: center;

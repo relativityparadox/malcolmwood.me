@@ -99,6 +99,14 @@ a.white-link {
   color: #42d1ff;
 }
 
+main {
+  background-color: #0c161a;
+}
+
+main, * {
+  z-index: 0;
+}
+
 .content {
   width: 70vw;
   margin: 0 auto;
@@ -108,7 +116,7 @@ a.white-link {
   position: relative;
   z-index: 0;
   display: flex;
-  overflow: hidden;
+  margin-top: -10px;
   align-items: center;
   justify-content: center;
   text-align: center;

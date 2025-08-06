@@ -15,7 +15,10 @@ White        #ffffff   Text */
 
 html,
 body {
+  position: relative;
   margin: 0;
+  overflow-x: hidden;
+  z-index: -10
   background-color: #0c161a;
   color: #fff;
   font-family: Montserrat, sans-serif;

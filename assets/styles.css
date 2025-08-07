@@ -28,10 +28,6 @@ body {
   font-size: 1px;
 }
 
-.universal-navbar {
-  z-index: 1000;
-}
-
 .navbar {
   position: fixed;
   z-index: 1000;

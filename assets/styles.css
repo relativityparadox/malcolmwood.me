@@ -95,8 +95,26 @@ a.white-link {
   color: #fff;
 }
 
-.white-link:hover {
+a.white-link:hover {
   color: #42d1ff;
+}
+
+button {
+  margin: 20px;
+  padding: 8px 20px;
+  border: 1px solid #054459;
+  border-radius: 10px;
+  background-color: #42d1ff;
+  font-family: Montserrat, sans-serif;
+  font-size: 0.9em;
+  color: #0c161a;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+button:hover {
+  background-color: #fff;
+  color: #054459;
+  cursor: pointer;
 }
 
 main {
@@ -118,6 +136,7 @@ main, * {
   position: relative;
   z-index: 0;
   display: flex;
+  flex-direction: column;
   margin-top: -20px;
   align-items: center;
   justify-content: center;
@@ -128,10 +147,32 @@ main, * {
   pointer-events: none;
 }
 
+.hero > * {
+  pointer-events: auto;
+}
+
 .hero-title {
   font-size: clamp(2em, 10vh, 4em);
   font-weight: 500;
   text-shadow: 0 0 5vh #0c161a;
+}
+
+.hero-subtitle {
+  font-size: clamp(1em, 5vh, 2em);
+  font-weight: 400;
+  color: #42d1ff;
+  text-shadow: 0 0 3vh #0c161a;
+}
+
+.hero-button-container {
+  display: grid;
+  grid-template-columns: 200px auto 200px;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.hero-button {
+  margin: 0;
 }
 
 #background-circles {
@@ -190,22 +231,6 @@ textarea::placeholder {
 
 .submit {
   grid-column: 1 / span 2;
-  margin: 20px 0 0 auto;
-  padding: 8px;
-  width: 200px;
-  border: 1px solid #054459;
-  border-radius: 10px;
-  background-color: #42d1ff;
-  font-family: Montserrat, sans-serif;
-  font-size: 0.9em;
-  color: #0c161a;
-  transition: background-color 0.2s, color 0.2s;
-}
-
-.submit:hover {
-  background-color: #fff;
-  color: #054459;
-  cursor: pointer;
 }
 
 .submit:active {

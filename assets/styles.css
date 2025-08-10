@@ -13,6 +13,10 @@ Red          #eb4034   Accents
 White        #ffffff   Text */
 
 
+.preload {
+  visibility: hidden;
+}
+
 html,
 body {
   position: relative;

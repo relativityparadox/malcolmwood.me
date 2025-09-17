@@ -14,13 +14,16 @@
   <div id="background-circles"></div>
 
   <div class="hero" id="hero">
-    <div class="hero-title">Malcolm Wood</div>
-    <div class="hero-subtitle">Welcome to my personal site,<br>
-      where I share my projects,<br>
-      designs, and more.</div>
+    <div class="hero-title">Hi, I'm Malcolm.</div>
+    <div class="hero-subtitle">
+      Subtitles are for people<br>
+      who don't appreciate brevity.<br>
+      Imagine being one of those people...
+    </div>
+
     <div class="hero-button-container">
       <button class="hero-button" onclick="window.location.href='/projects'">Check out my projects</button>
-      <div style="width: 1.25px; background-color: #fff;"></div>
+      <div class="hero-button-divider"></div>
       <button class="hero-button" onclick="window.location.href='#'">Learn about how I'm designing this site</button>
     </div>
   </div>
@@ -29,13 +32,15 @@
     <div class="content">
       <div class="intro">
         <h1 style="padding-top: 50px;">Fancy seeing you here!</h1>
-        <div class="text">Blah blah blah</div>
-        <div class="text">This site will go live at its own domain in early September 2025.</div>
+        <div class="text" style="text-align: center;">Still trying to figure out what to put here. In the meantime,
+          check out my <a class="blue-link" href="/projects">projects</a>!</div>
       </div>
-      <div class="featured">
-        <div class="subtitle">FEATURED PROJECT</div>
-        <h1 style="padding-top: 5px;">malcolmwood.me goes live!</h1>
-        <div class="text">After some time in preliminary development, my site is <i>finally</i> moving to its own domain at malcolmwood.me. The move should happen in the next 24 hours.</div>
+      <h2>And now, a random image, because I have nothing else to put here and a page this short looks ugly</h2>
+      <img width="100%" height="350vw" alt="Gaztelugatxe, Bermeo, Basque Country, Spain"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Gaztelugache%2C_Bermeo%2C_Pa%C3%ADs_Vasco%2C_Espa%C3%B1a%2C_2019-08-13%2C_DD_14.jpg/2560px-Gaztelugache%2C_Bermeo%2C_Pa%C3%ADs_Vasco%2C_Espa%C3%B1a%2C_2019-08-13%2C_DD_14.jpg">
+      <div class="text caption"> <a
+          href="https://commons.wikimedia.org/wiki/File:Gaztelugache,_Bermeo,_Pa%C3%ADs_Vasco,_Espa%C3%B1a,_2019-08-13,_DD_14.jpg">Diego
+          Delso</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via Wikimedia Commons
       </div>
     </div>
   </div>
@@ -47,12 +52,12 @@
   const bg = document.getElementById('background-circles');
 
   const circlesConfig = [
-    { size: 150, color: '#f53347' },
-    { size: 100, color: '#d7f24e' },
-    { size: 200, color: '#4ef2ed' },
-    { size: 150, color: '#f53347' },
-    { size: 100, color: '#d7f24e' },
-    { size: 200, color: '#4ef2ed' }
+    { size: 150, color: '#ff001a' },
+    { size: 150, color: '#d5ff00' },
+    { size: 150, color: '#4ef2ed' },
+    { size: 150, color: '#ff001a' },
+    { size: 150, color: '#d5ff00' },
+    { size: 150, color: '#4ef2ed' }
   ];
 
   const circles = [];

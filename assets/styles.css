@@ -4,13 +4,14 @@ Almost black #0c161a   Background, text
 Almost       #152a33   Hover highlights
 almost black
 Medium-dark  #08323f   Footer, inputs
-Medium       #054459   Header outline
-Medium       #05445999 Header
-(translucent)
+Medium       #054459   Navbar outline
+Medium(a)    #05445972 Navbar background
+Medium(b)    #054459af Navbar background (hover)
 Bright       #42d1ff   Links, hero background
 Light        #5191a6   Secondary text
-Red          #eb4034   Accents
+Red          #eb4034   Active links & buttons
 Gray         #89a4ad   Scrollbar
+Dark gray    #6c8a94   Captions
 White        #ffffff   Text */
 
 * {
@@ -58,15 +59,16 @@ body {
   padding: 14px;
   border-radius: 14px;
   border: 1px solid #054459;
-  background-color: #05445999;
+  background-color: #05445972;
   backdrop-filter: blur(30px);
-  transition: padding 0.6s, margin 0.6s, border-radius 0.6s;
+  transition: padding 0.4s, margin 0.4s, border-radius 0.4s, background-color 0.4s;
 }
 
 .navbar:hover {
   margin: 8px;
   padding: 22px;
   border-radius: 20px;
+  background-color: #054459af;
 }
 
 .navbar a {
@@ -86,9 +88,25 @@ body {
 
 h1 {
   margin: 0;
-  padding-top: 100px;
-  font-size: 2em;
+  padding: 100px 0 10px 0;
+  font-size: 2.3em;
+  font-weight: 600;
   text-align: center;
+}
+
+h2 {
+  margin: 0;
+  padding: 50px 0 25px 0;
+  font-size: 1.7em;
+  font-weight: 600;
+  text-align: center;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  margin: 30px 0 10px 0;
 }
 
 .subtitle {
@@ -101,12 +119,12 @@ h1 {
   padding-top: 10px;
 }
 
-a {
+.text a {
   color: #42d1ff;
   transition: color 0.2s;
 }
 
-a:hover {
+.text a:hover {
   color: #fff;
 }
 
@@ -116,6 +134,11 @@ a.white-link {
 
 a.white-link:hover {
   color: #42d1ff;
+}
+
+.caption {
+  font-size: 0.8em;
+  color: #6c8a94;
 }
 
 button {
@@ -187,33 +210,38 @@ textarea::placeholder {
   pointer-events: none;
 }
 
-.hero > * {
+.hero>* {
   pointer-events: auto;
 }
 
 .hero-title {
-  font-size: clamp(2em, 10vh, 4em);
+  font-size: clamp(2em, calc(3vh + 3vw), 4em);
   font-weight: 500;
   text-shadow: 0 0 5vh #0c161a;
 }
 
 .hero-subtitle {
-  font-size: clamp(1em, 5vh, 2em);
+  font-size: clamp(1em, calc(1.5vh + 1.5vw), 2em);
   font-weight: 400;
   color: #42d1ff;
   text-shadow: 0 0 3vh #0c161a;
 }
 
 .hero-button-container {
-  display: grid;
-  grid-template-columns: 200px auto 200px;
+  display: flex;
   gap: 20px;
   margin-top: 20px;
 }
 
 .hero-button {
   margin: 0;
+  width: 200px;
   border-radius: calc(8px + 1.2em);
+}
+
+.hero-button-divider {
+  width: 1.25px;
+  background-color: #fff;
 }
 
 #background-circles {
@@ -239,6 +267,11 @@ textarea::placeholder {
   transform: scale(1.4);
 }
 
+.content img {
+  border-radius: 14px;
+  object-fit: cover;
+}
+
 .contact-form {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -261,4 +294,24 @@ textarea::placeholder {
   background-color: #08323f;
   font-size: 0.8em;
   text-align: center;
+}
+
+/* MOBILE LAYOUT */
+
+@media screen and (max-width: 700px) {
+  .content {
+    width: 90vw;
+  }
+  .hero-button-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .hero-button {
+    background-color: #05445972;
+    backdrop-filter: blur(30px);
+    color: #fff;
+  }
+  .hero-button-divider {
+    display: none;
+  }
 }

@@ -8,7 +8,7 @@ Medium       #054459   Navbar outline
 Medium(a)    #05445972 Navbar background
 Medium(b)    #054459af Navbar background (hover)
 Bright       #42d1ff   Links, hero background
-Light        #5191a6   Secondary text
+Light        #5191a6   Secondary text, mobile navbar divider
 Red          #eb4034   Active links & buttons
 Gray         #89a4ad   Scrollbar
 Dark gray    #6c8a94   Captions
@@ -299,19 +299,32 @@ textarea::placeholder {
 /* MOBILE LAYOUT */
 
 @media screen and (max-width: 700px) {
+  .navbar {
+    
+  }
   .content {
     width: 90vw;
   }
   .hero-button-container {
     flex-direction: column;
-    gap: 15px;
+    gap: 0;
   }
   .hero-button {
+    width: calc(100vw - 32px);
     background-color: #05445972;
     backdrop-filter: blur(30px);
     color: #fff;
   }
+  .hero-button:first-child {
+    border-radius: 14px 14px 0 0;
+  }
+  .hero-button:last-child {
+    border-radius: 0 0 14px 14px;
+  }
   .hero-button-divider {
-    display: none;
+    height: 1.25px;
+    width: calc(100% - 24px);
+    margin: 0 auto;
+    background-color: #5191a6;
   }
 }

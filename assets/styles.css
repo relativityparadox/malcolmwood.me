@@ -1,5 +1,5 @@
 :root {
-  /* COLOR VARIABLES */
+  /* SITE COLORS */
   --almost-black: #0c161a;          /* bg, text */
   --almost-almost-black: #152a33;   /* hover highlights */
   --medium-dark: #08323f;           /* footer, inputs */
@@ -118,6 +118,12 @@ a:hover .link-chevron {
   text-align: center;
 }
 
+.centered-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 button {
   margin: 20px;
   padding: 8px 20px;
@@ -162,7 +168,7 @@ textarea::placeholder {
   color: var(--light);
 }
 
-/* SCROLLBAR STYLES (WEBKIT BROWSERS) */
+/* SCROLLBAR STYLES (WEBKIT BROWSERS ONLY AS OF 2025) */
 
 ::-webkit-scrollbar {
   width: 8px;
@@ -260,14 +266,13 @@ textarea::placeholder {
   color: var(--red);
 }
 
-.content-wrapper {
-  padding-bottom: 40px;
+main {
   background-color: var(--almost-black);
 }
 
 .content {
   width: 70vw;
-  margin: 0 auto;
+  margin: 0 auto 40px auto;
 }
 
 .content img {
@@ -360,6 +365,17 @@ textarea::placeholder {
 }
 
 /* SPECIFIC STYLES */
+
+/* /404.html */
+
+.error-404-illustration {
+  padding-top: 85px;
+  width: 80%;
+  max-width: 400px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
 
 /* /projects.html */
 

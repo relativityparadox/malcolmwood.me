@@ -445,15 +445,6 @@ textarea::placeholder {
   color: var(--bright);
 }
 
-.project-card.for-president {
-  background-color: var(--indigo-45);
-  border: 1px solid var(--indigo);
-}
-
-.project-card.for-president .subtitle {
-  color: var(--indigo);
-}
-
 .project-card.barium-project {
   background-color: var(--sage-45);
   border: 1px solid var(--sage);
@@ -461,6 +452,15 @@ textarea::placeholder {
 
 .project-card.barium-project .subtitle {
   color: var(--sage);
+}
+
+.project-card.for-president {
+  background-color: var(--indigo-45);
+  border: 1px solid var(--indigo);
+}
+
+.project-card.for-president .subtitle {
+  color: var(--indigo);
 }
 
 /* /projects/malcolmwood.me.html */

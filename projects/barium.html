@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barium</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&family=Zalando+Sans:ital,wght@0,200..900;1,200..900&display=swap"
+    rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      background-color: #0f0302;
+      font-family: "Zalando Sans";
+      color: #ffffff;
+    }
+
+    .info-box {
+      position: relative;
+    }
+
+    .info-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #0f0302;
+      opacity: 1;
+      transition: opacity 0.6s ease-out;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .info-box.visible::before {
+      opacity: 0;
+    }
+
+    .info-box>* {
+      position: relative;
+      z-index: 2;
+      opacity: 0;
+      transition: opacity 0.8s ease-out;
+    }
+
+    .info-box.visible>* {
+      opacity: 1;
+    }
+
+    h1 {
+      margin: 40px 0 0 20px;
+      font-family: "Zalando Sans Expanded";
+      font-weight: 600;
+      font-size: 14vw;
+      color: #f23929;
+      text-shadow: 0 0 1vw #f2392988;
+    }
+
+    h2 {
+      margin: 60px 0 10px 0;
+      text-align: center;
+      font-size: 3.4vw;
+      text-shadow: 0 0 0.5vw #ffffff88;
+    }
+
+    h3 {
+      margin: 0;
+      font-family: "Zalando Sans Expanded";
+      font-weight: 700;
+      font-size: 4vw;
+      color: #f23929;
+      text-shadow: 0 0 0.5vw #f2392988;
+    }
+
+    .big {
+      font-size: 2.3vw;
+    }
+
+    .blue {
+      color: #4cbaba;
+    }
+
+    math {
+      font-size: 2vw;
+      color: #f23929;
+    }
+
+    img {
+      border-radius: 10px;
+    }
+
+    strong {
+      color: #f23929;
+      font-weight: 700;
+    }
+
+    .align-right {
+      text-align: right;
+    }
+
+    .content {
+      margin: 0 30px 600px 30px;
+    }
+
+    .info-bar {
+      display: flex;
+      justify-content: space-between;
+      font-size: 2vw;
+    }
+
+    .info-box {
+      display: flex;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    .info-box .item {
+      flex: 1;
+    }
+
+    .info-box .wide-item {
+      flex: 2;
+      border-radius: 10px;
+    }
+
+    .barium-color {
+      border-radius: 10px;
+      background-image: url(https://d39l2hkdp2esp1.cloudfront.net/img/video/V7864/V7864_00.jpg);
+      background-size: cover;
+      background-position: center;
+      transition: filter 0.8s, padding 0.3s, margin 0.3s;
+    }
+
+    .barium-color:hover {
+      padding: 5px;
+      margin: -5px;
+      filter: sepia(100%);
+    }
+
+    .barium-luster {
+      border-radius: 10px;
+      background-image: url(https://media.istockphoto.com/id/611067250/vector/brushed-metal-background.jpg?s=612x612&w=0&k=20&c=5NX_PSOXW680LOQfGNf6_xF8cinwNkSUMhuw9VVteBA=);
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    .duct-mall-box {
+      margin-bottom: 40px;
+    }
+
+    .duct-mall-box h3 {
+      text-align: center;
+    }
+
+    #ductility,
+    #malleability {
+      width: 50%;
+      display: block;
+      margin: 0 auto;
+    }
+
+    #ductility path {
+      animation: ductility 3s infinite;
+    }
+
+    #malleability path {
+      animation: malleability 2.2s infinite;
+    }
+
+    .conductivity-box {
+      margin-bottom: 70px;
+    }
+
+    .dot-track {
+      position: relative;
+      overflow: hidden;
+      background-color: #142424;
+      border-radius: 10px;
+    }
+
+    .dot {
+      position: absolute;
+      left: -10px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #00ffff;
+      animation: fly 1s linear infinite;
+    }
+
+    .dot:nth-child(1) {
+      top: 10%;
+    }
+
+    .dot:nth-child(2) {
+      top: 30%;
+      animation-delay: 0.4s;
+    }
+
+    .dot:nth-child(3) {
+      top: 50%;
+      animation-delay: 0.9s;
+    }
+
+    .dot:nth-child(4) {
+      top: 70%;
+      animation-delay: 0.7s;
+    }
+
+    .dot:nth-child(5) {
+      top: 90%;
+      animation-delay: 0.2s;
+    }
+
+    .temp {
+      height: 10vw;
+    }
+
+    .oxidization-box {
+      margin-bottom: 40px;
+    }
+
+    .oxidize {
+      height: 15vw;
+      margin-top: -30px;
+    }
+
+    .oxidize-o {
+      animation: oxidize-o 5s infinite;
+    }
+
+    .oxidize-ba {
+      animation: oxidize-ba 5s infinite;
+    }
+
+    .density {
+      height: 8vw;
+    }
+
+    .barium-density {
+      width: 100%;
+      background-image: url(https://cdn.architextures.org/textures/20/07/grey-render-5efe4bfe6e504-1250.jpg);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .barium-structure {
+      width: 100%;
+      background-image: url(https://panolam.com/wp-content/uploads/2022/09/GRID-OVERLAY-01.jpg);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .discovery-box {
+      margin-bottom: 70px;
+    }
+
+    .discovery {
+      height: 10vw;
+    }
+
+    .references {
+      margin-top: 40px;
+      border-radius: 10px;
+      padding: 12px;
+      background-color: #f2392929;
+    }
+
+    @keyframes ductility {
+      0% {
+        d: path("m121.118126 49.26812c22.914558 -0.30755234 48.13555 3.0755463 70.12667 9.226643c21.991104 6.1510887 53.669678 14.147511 61.819992 27.67992c8.15033 13.532402 -2.1530151 45.979065 -12.91806 53.51451c-10.76506 7.5354614 -32.910324 -5.07283 -51.672287 -8.301788c-18.761963 -3.2289581 -42.599243 -10.456856 -60.899475 -11.07196c-18.300232 -0.6151123 -30.448273 3.8447952 -48.901924 7.3813095c-18.45366 3.536522 -49.056084 19.5279 -61.820007 13.837776c-12.763918 -5.69014 -20.914238 -34.44613 -14.763508 -47.97854c6.150731 -13.532402 31.829798 -25.834587 51.6679 -33.215904c19.8381 -7.3813095 44.44614 -10.764412 67.3607 -11.071968z");
+      }
+
+      50% {
+        d: path("m122.23437 78.54673c19.244972 0.36832428 38.581367 -6.262909 58.010506 -10.498688c19.429123 -4.2357864 46.77777 -21.8224 58.5643 -14.916012c11.78653 6.9063835 20.71872 42.91032 12.154846 56.35433c-8.563858 13.444008 -42.635605 18.692474 -63.538055 24.309708c-20.90245 5.6172333 -41.618988 9.024506 -61.87664 9.393707c-20.257652 0.36920166 -39.59536 -1.2847748 -59.66929 -7.178482c-20.073929 -5.893692 -52.30271 -13.910324 -60.774277 -28.183723c-8.471566 -14.273407 0 -50.458443 9.944881 -57.456696c9.944881 -6.998249 31.860455 10.771217 49.724407 15.467194c17.86396 4.6959763 38.214348 12.340332 57.45932 12.708664z");
+      }
+
+      100% {
+        d: path("m121.118126 49.26812c22.914558 -0.30755234 48.13555 3.0755463 70.12667 9.226643c21.991104 6.1510887 53.669678 14.147511 61.819992 27.67992c8.15033 13.532402 -2.1530151 45.979065 -12.91806 53.51451c-10.76506 7.5354614 -32.910324 -5.07283 -51.672287 -8.301788c-18.761963 -3.2289581 -42.599243 -10.456856 -60.899475 -11.07196c-18.300232 -0.6151123 -30.448273 3.8447952 -48.901924 7.3813095c-18.45366 3.536522 -49.056084 19.5279 -61.820007 13.837776c-12.763918 -5.69014 -20.914238 -34.44613 -14.763508 -47.97854c6.150731 -13.532402 31.829798 -25.834587 51.6679 -33.215904c19.8381 -7.3813095 44.44614 -10.764412 67.3607 -11.071968z");
+      }
+    }
+
+    @keyframes malleability {
+      0% {
+        d: path("m12.52204 50.353085c-18.077873 16.069752 -15.942118 72.188034 2.2615986 88.8858c18.203716 16.69777 69.42366 11.174988 106.9607 11.300827c37.537033 0.12585449 98.17435 5.77507 118.261536 -10.545761c20.087173 -16.320847 21.720749 -71.18368 2.2615967 -87.37927c-19.459167 -16.195591 -80.72569 -9.417358 -119.016594 -9.794292c-38.29091 -0.37693405 -92.65096 -8.537056 -110.728836 7.532696z");
+      }
+
+      50% {
+        d: path("m12.523292 50.353848c-18.480314 9.817585 -15.941382 72.18678 2.2624674 88.88451c18.20385 16.697723 69.42388 11.175858 106.96063 11.301834c37.536736 0.12599182 98.17278 5.7751617 118.259834 -10.545929c20.087067 -16.321083 21.318909 -77.437004 2.2624664 -87.38057c-19.056427 -9.943569 -78.310135 28.095798 -116.60104 27.719158c-38.2909 -0.37664032 -94.66404 -39.796585 -113.144356 -29.979z");
+      }
+
+      100% {
+        d: path("m12.52204 50.353085c-18.077873 16.069752 -15.942118 72.188034 2.2615986 88.8858c18.203716 16.69777 69.42366 11.174988 106.9607 11.300827c37.537033 0.12585449 98.17435 5.77507 118.261536 -10.545761c20.087173 -16.320847 21.720749 -71.18368 2.2615967 -87.37927c-19.459167 -16.195591 -80.72569 -9.417358 -119.016594 -9.794292c-38.29091 -0.37693405 -92.65096 -8.537056 -110.728836 7.532696z");
+      }
+    }
+
+    @keyframes fly {
+      0% {
+        left: -10px;
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      90% {
+        opacity: 1;
+      }
+
+      100% {
+        left: 100%;
+        opacity: 0;
+      }
+    }
+
+    @keyframes oxidize-o {
+      0% {
+        d: path("m578.58984 195.64746l0 0c0 -101.20291 82.03412 -183.2441 183.22833 -183.2441l0 0c48.595215 0 95.20001 19.306019 129.56201 53.67095c34.362 34.364937 53.66638 80.973785 53.66638 129.57314l0 0c0 101.20291 -82.03418 183.24411 -183.2284 183.24411l0 0c-101.194214 0 -183.22833 -82.0412 -183.22833 -183.24411z");
+      }
+
+      50% {
+        d: path("m468.56558 469.63074l0 0c0 -101.20291 82.03409 -183.24411 183.2283 -183.24411l0 0c48.595215 0 95.20007 19.30603 129.56201 53.67096c34.362 34.36493 53.66638 80.973785 53.66638 129.57315l0 0c0 101.20294 -82.03412 183.24408 -183.2284 183.24408l0 0c-101.194214 0 -183.2283 -82.04114 -183.2283 -183.24408z");
+      }
+
+      100% {
+        d: path("m578.58984 195.64746l0 0c0 -101.20291 82.03412 -183.2441 183.22833 -183.2441l0 0c48.595215 0 95.20001 19.306019 129.56201 53.67095c34.362 34.364937 53.66638 80.973785 53.66638 129.57314l0 0c0 101.20291 -82.03418 183.24411 -183.2284 183.24411l0 0c-101.194214 0 -183.22833 -82.0412 -183.22833 -183.24411z");
+      }
+    }
+
+    @keyframes oxidize-ba {
+      0% {
+        d: path("m15.62703 461.01773l0 0c0 -134.82706 109.29893 -244.12598 244.12599 -244.12598l0 0c64.746216 0 126.84064 25.720337 172.62314 71.50284c45.7825 45.7825 71.50284 107.87692 71.50284 172.62314l0 0c0 134.82706 -109.29892 244.126 -244.12598 244.126l0 0c-134.82706 0 -244.12599 -109.29895 -244.12599 -244.126z");
+      }
+
+      50% {
+        d: path("m87.47677 292.4997l0 0c0 -134.82706 109.29893 -244.12599 244.12598 -244.12599l0 0c64.74625 0 126.84064 25.72034 172.62314 71.50285c45.78253 45.7825 71.50287 107.87691 71.50287 172.62314l0 0c0 134.82706 -109.29895 244.12598 -244.126 244.12598l0 0c-134.82706 0 -244.12598 -109.29892 -244.12598 -244.12598z");
+      }
+
+      100% {
+        d: path("m15.62703 461.01773l0 0c0 -134.82706 109.29893 -244.12598 244.12599 -244.12598l0 0c64.746216 0 126.84064 25.720337 172.62314 71.50284c45.7825 45.7825 71.50284 107.87692 71.50284 172.62314l0 0c0 134.82706 -109.29892 244.126 -244.12598 244.126l0 0c-134.82706 0 -244.12599 -109.29895 -244.12599 -244.126z");
+      }
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.2 // Trigger when 20% of the element is visible
+      });
+
+      document.querySelectorAll('.info-box').forEach(box => {
+        observer.observe(box);
+      });
+    });
+  </script>
+</head>
+
+<body>
+  
+  <p><a href="/projects" style="color: lightskyblue;">[back to Projects]</a> For a school project, I created a webpage about barium and hosted it here.</p>
+  <hr>
+
+  <h1>Barium</h1>
+
+  <div class="content">
+
+    <div class="info-bar">
+      <div>
+        <strong>ATOMIC NUMBER</strong> 56
+      </div>
+      <div>
+        <strong>SYMBOL</strong> BA
+      </div>
+      <div>
+        <strong>ATOMIC MASS</strong> 137.327 AMU
+      </div>
+    </div>
+
+    <h2>QUICK FACTS</h2>
+
+    <div class="color-box info-box">
+      <div class="item">
+        <h3>Color</h3>
+        <p>BARIUM IS SILVERY-WHITE IN ITS PURE FORM.<br>
+          <strong>HOVER OVER THE IMAGE TO SEE WHAT HAPPENS TO BARIUM'S COLOR WHEN EXPOSED TO AIR.</strong>
+        </p>
+      </div>
+      <div class="barium-color wide-item"></div>
+    </div>
+
+    <div class="luster-bux info-box">
+      <div class="barium-luster wide-item"></div>
+      <div class="item">
+        <h3>Luster</h3>
+        <p>BARIUM HAS A SHINY, METALLIC LUSTER WHEN FRESHLY CUT. WHEN OXIDIZED, IT BECOMES DULL AND TARNISHED.
+        </p>
+      </div>
+    </div>
+
+    <div class="duct-mall-box info-box">
+      <div class="item">
+        <svg id="ductility" version="1.1" viewBox="0.0 0.0 256.0 192.0" fill="none" stroke="none"
+          stroke-linecap="square" stroke-miterlimit="10" xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill="#f2392988"
+            d="m121.118126 49.26812c22.914558 -0.30755234 48.13555 3.0755463 70.12667 9.226643c21.991104 6.1510887 53.669678 14.147511 61.819992 27.67992c8.15033 13.532402 -2.1530151 45.979065 -12.91806 53.51451c-10.76506 7.5354614 -32.910324 -5.07283 -51.672287 -8.301788c-18.761963 -3.2289581 -42.599243 -10.456856 -60.899475 -11.07196c-18.300232 -0.6151123 -30.448273 3.8447952 -48.901924 7.3813095c-18.45366 3.536522 -49.056084 19.5279 -61.820007 13.837776c-12.763918 -5.69014 -20.914238 -34.44613 -14.763508 -47.97854c6.150731 -13.532402 31.829798 -25.834587 51.6679 -33.215904c19.8381 -7.3813095 44.44614 -10.764412 67.3607 -11.071968z"
+            fill-rule="evenodd" />
+        </svg>
+        <h3>Ductility</h3>
+        <p>BARIUM IS DUCTILE — IT CAN BE STRETCHED INTO THIN WIRES WITHOUT BREAKING.</p>
+      </div>
+      <div class="item">
+        <svg id="malleability" version="1.1" viewBox="0.0 0.0 256.0 192.0" fill="none" stroke="none"
+          stroke-linecap="square" stroke-miterlimit="10" xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill="#f2392988"
+            d="m12.52204 50.353085c-18.077873 16.069752 -15.942118 72.188034 2.2615986 88.8858c18.203716 16.69777 69.42366 11.174988 106.9607 11.300827c37.537033 0.12585449 98.17435 5.77507 118.261536 -10.545761c20.087173 -16.320847 21.720749 -71.18368 2.2615967 -87.37927c-19.459167 -16.195591 -80.72569 -9.417358 -119.016594 -9.794292c-38.29091 -0.37693405 -92.65096 -8.537056 -110.728836 7.532696z"
+            fill-rule="evenodd" />
+        </svg>
+        <h3>Malleability</h3>
+        <p>BARIUM IS ALSO MALLEABLE — IT CAN BE EASILY PRESSED INTO THIN SHEETS.</p>
+      </div>
+    </div>
+
+    <div class="conductivity-box info-box">
+      <div class="item">
+        <h3>Electrical<br>
+          Conductivity</h3>
+      </div>
+      <div class="dot-track item">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div class="item">
+        <p>BARIUM IS A GOOD CONDUCTOR OF ELECTRICITY, WITH A CONDUCTIVITY VALUE OF</p>
+        <d>
+          <math>
+            <mrow>
+              <mn>2.9</mn>
+              <mo>&times;</mo>
+              <msup>
+                <mn>10</mn>
+                <mn>6</mn>
+              </msup>
+              <mo>&InvisibleTimes;</mo>
+              <mfrac>
+                <mrow>
+                  <mi mathvariant="normal">S</mi>
+                </mrow>
+                <mrow>
+                  <mi mathvariant="normal">m</mi>
+                </mrow>
+              </mfrac>
+            </mrow>
+          </math>.
+      </div>
+    </div>
+
+    <div class="temp-box info-box">
+      <svg class="temp" version="1.1" viewBox="0.0 0.0 184.3753280839895 537.498687664042" fill="none" stroke="none"
+        stroke-linecap="square" stroke-miterlimit="10" xmlns:xlink="http://www.w3.org/1999/xlink"
+        xmlns="http://www.w3.org/2000/svg">
+        <path fill="#f23929" fill-opacity="0.5333"
+          d="m0 42.458553l0 0c0 -23.449211 19.009342 -42.458553 42.458553 -42.458553l99.460846 0l0 0c11.260696 0 22.060196 4.473299 30.02272 12.4358225c7.9625244 7.9625235 12.435837 18.762024 12.435837 30.022732l0 452.5947c0 23.449188 -19.009354 42.458588 -42.458557 42.458588l-99.460846 0c-23.449211 0 -42.458553 -19.0094 -42.458553 -42.458588z"
+          fill-rule="evenodd" />
+        <path fill="#f23929"
+          d="m0 384.92838l0 0c0 -23.449219 19.009342 -42.458557 42.458553 -42.458557l99.460846 0l0 0c11.260696 0 22.060196 4.473297 30.02272 12.435822c7.9625244 7.9625244 12.435837 18.762024 12.435837 30.022736l0 110.138c0 23.449188 -19.009354 42.458588 -42.458557 42.458588l-99.460846 0l0 0c-23.449211 0 -42.458553 -19.0094 -42.458553 -42.458588z"
+          fill-rule="evenodd" />
+      </svg>
+      <div class="item">
+        <h3>Melting Point</h3>
+        <p class="big">1,341&deg;F</p>
+      </div>
+      <svg class="temp" version="1.1" viewBox="0.0 0.0 960.0 720.0" fill="none" stroke="none" stroke-linecap="square"
+        stroke-miterlimit="10" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#f23929" fill-opacity="0.5333" d="m374.68698 53.525326l210.58267 0l0 270.17322l-210.58267 0z"
+          fill-rule="evenodd" />
+        <path fill="#f23929"
+          d="m374.70923 232.33412l0 0c0 -30.726059 24.908386 -55.634445 55.63446 -55.634445l99.31378 0l0 0c14.755188 0 28.906006 5.8614655 39.339478 16.294952c10.433472 10.433487 16.294983 24.58432 16.294983 39.339493l0 87.43977c0 30.726044 -24.908386 55.63443 -55.63446 55.63443l-99.31378 0l0 0c-30.726074 0 -55.63446 -24.908386 -55.63446 -55.63443z"
+          fill-rule="evenodd" />
+        <path fill="#f23929"
+          d="m241.59055 481.59427l0 0c0 -131.66989 106.73956 -238.40945 238.40945 -238.40945l0 0c63.230103 0 123.87048 25.118073 168.58093 69.82852c44.71045 44.71045 69.82849 105.35083 69.82849 168.58093l0 0c0 131.66989 -106.7395 238.40945 -238.40942 238.40945l0 0c-131.66989 0 -238.40945 -106.73956 -238.40945 -238.40945z"
+          fill-rule="evenodd" />
+        <path fill="#f23929" fill-opacity="0.5333"
+          d="m344.7083 26.76903l0 0c0 -14.785577 11.986084 -26.771654 26.771637 -26.771654l217.0394 0c7.100281 0 13.909729 2.820577 18.93042 7.8412356c5.02063 5.020659 7.8412476 11.830133 7.8412476 18.930418l0 0l0 0c0 14.785574 -11.986084 26.771654 -26.771667 26.771654l-217.0394 0c-14.785553 0 -26.771637 -11.98608 -26.771637 -26.771654z"
+          fill-rule="evenodd" />
+      </svg>
+      <div class="item align-right">
+        <h3>Boiling Point</h3>
+        <p class="big">3,347&deg;F</p>
+      </div>
+      <svg class="temp" version="1.1" viewBox="0.0 0.0 184.3753280839895 537.498687664042" fill="none" stroke="none"
+        stroke-linecap="square" stroke-miterlimit="10" xmlns:xlink="http://www.w3.org/1999/xlink"
+        xmlns="http://www.w3.org/2000/svg">
+        <path fill="#f23929" fill-opacity="0.5333"
+          d="m0 42.458553l0 0c0 -23.449211 19.009342 -42.458553 42.458553 -42.458553l99.460846 0l0 0c11.260696 0 22.060196 4.473299 30.02272 12.4358225c7.9625244 7.9625235 12.435837 18.762024 12.435837 30.022732l0 452.5947c0 23.449188 -19.009354 42.458588 -42.458557 42.458588l-99.460846 0c-23.449211 0 -42.458553 -19.0094 -42.458553 -42.458588z"
+          fill-rule="evenodd" />
+        <path fill="#f23929"
+          d="m0 153.97037l0 0c0 -23.449219 19.009342 -42.458557 42.458553 -42.458557l99.460846 0l0 0c11.260696 0 22.060196 4.473297 30.02272 12.435822c7.9625244 7.9625244 12.435837 18.762024 12.435837 30.022736l0 341.09863c0 23.449188 -19.009354 42.458588 -42.458557 42.458588l-99.460846 0c-23.449211 0 -42.458553 -19.0094 -42.458553 -42.458588z"
+          fill-rule="evenodd" />
+      </svg>
+    </div>
+
+    <div class="oxidization-box info-box">
+      <svg class="oxidize" version="1.1" viewBox="0.0 0.0 960.0 720.0" fill="none" stroke="none" stroke-linecap="square"
+        stroke-miterlimit="10" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+        <path class="oxidize-o" fill="#f23929" fill-opacity="0.5333"
+          d="m578.58984 195.64746l0 0c0 -101.20291 82.03412 -183.2441 183.22833 -183.2441l0 0c48.595215 0 95.20001 19.306019 129.56201 53.67095c34.362 34.364937 53.66638 80.973785 53.66638 129.57314l0 0c0 101.20291 -82.03418 183.24411 -183.2284 183.24411l0 0c-101.194214 0 -183.22833 -82.0412 -183.22833 -183.24411z"
+          fill-rule="evenodd" />
+        <path class="oxidize-o" stroke="#0f0302" stroke-width="24.57742782152231" stroke-linejoin="round"
+          stroke-linecap="butt"
+          d="m578.58984 195.64746l0 0c0 -101.20291 82.03412 -183.2441 183.22833 -183.2441l0 0c48.595215 0 95.20001 19.306019 129.56201 53.67095c34.362 34.364937 53.66638 80.973785 53.66638 129.57314l0 0c0 101.20291 -82.03418 183.24411 -183.2284 183.24411l0 0c-101.194214 0 -183.22833 -82.0412 -183.22833 -183.24411z"
+          fill-rule="evenodd" />
+        <path class="oxidize-ba" fill="#f23929"
+          d="m15.62703 461.01773l0 0c0 -134.82706 109.29893 -244.12598 244.12599 -244.12598l0 0c64.746216 0 126.84064 25.720337 172.62314 71.50284c45.7825 45.7825 71.50284 107.87692 71.50284 172.62314l0 0c0 134.82706 -109.29892 244.126 -244.12598 244.126l0 0c-134.82706 0 -244.12599 -109.29895 -244.12599 -244.126z"
+          fill-rule="evenodd" />
+        <path class="oxidize-ba" stroke="#0f0302" stroke-width="24.57742782152231" stroke-linejoin="round"
+          stroke-linecap="butt"
+          d="m15.62703 461.01773l0 0c0 -134.82706 109.29893 -244.12598 244.12599 -244.12598l0 0c64.746216 0 126.84064 25.720337 172.62314 71.50284c45.7825 45.7825 71.50284 107.87692 71.50284 172.62314l0 0c0 134.82706 -109.29892 244.126 -244.12598 244.126l0 0c-134.82706 0 -244.12599 -109.29895 -244.12599 -244.126z"
+          fill-rule="evenodd" />
+      </svg>
+      <h3 class="item">Tendency to be oxidized</h3>
+      <p class="item">BARIUM IS <strong>EXTREMELY REACTIVE</strong> DUE TO ITS LOW IONIZATION ENERGY — IT OXIDIZES
+        IMMEDIATELY ON CONTACT WITH AIR, TAKING ON A YELLOWISH-WHITE HUE.<br>
+        <strong>BARIUM FORMS IONIC BONDS WITH MOST NONMETALS.</strong>
+      </p>
+    </div>
+
+    <div class="density-box info-box">
+      <div>
+        <svg class="density" version="1.1" viewBox="0.0 0.0 960.0 720.0" fill="none" stroke="none"
+          stroke-linecap="square" stroke-miterlimit="10" xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill="#4cbaba" d="m52.88189 719.99335l138.81104 -555.2441l576.61414 0l138.81104 555.2441z"
+            fill-rule="evenodd" />
+          <path fill="#4cbaba"
+            d="m312.21463 167.78546l0 0c0 -92.66207 75.11743 -167.77953 167.77951 -167.77953c92.66211 0 167.77954 75.117455 167.77954 167.77953l-83.88977 0c0 -46.33104 -37.558716 -83.88976 -83.88977 -83.88976c-46.331024 0 -83.88977 37.558723 -83.88977 83.88976z"
+            fill-rule="evenodd" />
+        </svg>
+        <h3>Density</h3>
+        <p>BARIUM HAS A DENSITY OF</p>
+        <math>
+          <mn>3.51</mn>
+          <mtext>&#xA0;g/cm</mtext>
+          <msup>
+            <mn></mn>
+            <mrow>
+              <mo>−</mo>
+              <mn>3</mn>
+            </mrow>
+          </msup>
+        </math>.
+      </div>
+      <div class="wide-item barium-density"></div>
+    </div>
+
+    <div class="info-box">
+      <div class="wide-item barium-structure"></div>
+      <div class="item">
+        <h3>Atomic Structure</h3>
+        <p>PURE BARIUM HAS A <strong>BODY-CENTERED CUBIC CRYSTAL STRUCTURE</strong>, MEANING THAT ATOMS ARE ARRANGED IN
+          A REPEATING LATTICE. THIS ARRANGEMENT EXISTS DUE TO TIGHT METALLIC BONDS.</p>
+      </div>
+    </div>
+
+    <hr>
+
+    <h2>HISTORY & USAGE</h2>
+
+    <div class="discovery-box info-box">
+      <svg class="discovery" version="1.1" viewBox="0.0 0.0 604 666" fill="none" stroke="none" stroke-linecap="square"
+        stroke-miterlimit="10" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#f23929"
+          d="m135.40793 584.6192c0.98661804 9.651428 0.84303284 49.458435 -2.5290833 61.542236c-3.372116 12.08374 -10.818665 10.819824 -17.703583 10.96051c-6.884918 0.14068604 -19.39022 -5.0581665 -23.605934 -10.116333c-4.215721 -5.0581665 0.55989075 -14.331482 -1.6883774 -20.232666c-2.2482605 -5.901184 -9.553543 -10.6779785 -11.801231 -15.1744995c-2.2476883 -4.496521 1.1255875 -8.291931 -1.6848907 -11.804749c-2.8104858 -3.5127563 -12.086685 -6.0407104 -15.1779785 -9.272095c-3.0912933 -3.2314453 0.84534454 -6.8843384 -3.3697968 -10.116333c-4.2151375 -3.2319946 -15.879147 -3.6552734 -21.921036 -9.275635c-6.041895 -5.6203613 -9.97448 -16.156494 -14.330317 -24.446655c-4.355837 -8.290161 -9.134925 -16.441956 -11.804706 -25.294312c-2.6697812 -8.852356 -3.792467 -20.373352 -4.213981 -27.819916c-0.42151403 -7.4465637 2.1064115 -12.784973 1.6848974 -16.859406c-0.42151356 -4.0744324 -3.0090766 -4.7362366 -4.2139807 -7.5872498c-1.2049044 -2.8510132 -3.1752503 -4.0900574 -3.0154457 -9.518799c0.15980472 -5.4287415 2.7821076 -15.832825 3.974274 -23.053558c1.1921663 -7.220764 3.7090912 -14.110321 3.1787248 -20.270905c-0.5303664 -6.1605835 -5.433361 -11.061829 -6.360923 -16.692627c-0.9275622 -5.6307983 -0.0660063 -12.388336 0.79554963 -17.092163c0.8615558 -4.703827 4.572384 -6.4935303 4.373786 -11.130737c-0.19859791 -4.6372375 -5.3667755 -10.068298 -5.5653734 -16.692657c-0.1985979 -6.624359 3.9100046 -16.693817 4.373786 -23.053558c0.46378088 -6.3597717 -2.38607 -8.877869 -1.5910993 -15.1050415c0.7949705 -6.227173 4.770982 -13.977112 6.3609223 -22.257996c1.589942 -8.280914 -0.5309448 -17.490509 3.1787252 -27.427368c3.70967 -9.936829 14.30947 -20.998108 19.079292 -32.193695c4.769825 -11.195602 3.4450684 -24.97644 9.53965 -34.979874c6.0945816 -10.003433 22.126003 -18.018555 27.027843 -25.04071c4.9018326 -7.0221405 1.4556122 -11.130157 2.383171 -17.092148c0.9275665 -5.9619904 0.797287 -13.711365 3.1821976 -18.67978c2.3849106 -4.9684296 6.755226 -5.1681824 11.127274 -11.130753c4.3720474 -5.96257 6.2943344 -16.49636 15.105019 -24.644669c8.810684 -8.1483 25.304733 -15.633652 37.759087 -24.245155c12.454346 -8.611504 24.313477 -21.594482 36.966995 -27.423882c12.653519 -5.829399 25.970001 -2.4514961 38.954132 -7.5525093c12.984146 -5.101013 25.436752 -17.621367 38.95067 -23.053568c13.513931 -5.4322033 28.750961 -9.141873 42.13286 -9.539648c13.3819275 -0.3977747 29.546509 7.0204067 38.1586 7.152998c8.612091 0.13259315 9.009277 -4.7675066 13.513916 -6.3574486c4.5046387 -1.589941 7.6845093 -3.3807955 13.513916 -3.1821976c5.8294067 0.19859791 13.292175 0.5315237 21.462463 4.373785c8.170319 3.8422623 20.117462 12.7838 27.559387 18.679783c7.441925 5.8959846 9.540222 13.64883 17.092163 16.696121c7.5519104 3.0472908 21.064667 0.32887268 28.219421 1.5876236c7.154724 1.2587509 10.270355 2.6524124 14.708984 5.9648857c4.438629 3.3124733 7.881958 6.623211 11.922821 13.909962c4.040863 7.286743 7.2213135 23.186157 12.322327 29.810524c5.101013 6.6243744 9.826263 5.7622375 18.283752 9.935684c8.4574585 4.1734543 24.600098 8.943855 32.46118 15.105026c7.861145 6.1611633 10.5980835 13.846268 14.705505 21.861984c4.107483 8.015701 9.077637 16.096848 9.939148 26.232285c0.86157227 10.135437 -4.968384 26.961838 -4.7697754 34.580353c0.1986084 7.618515 5.3656006 6.8907166 5.9613647 11.130753c0.5958252 4.240036 -3.4467773 8.104294 -2.3865967 14.3094635c1.0601196 6.2051697 4.4415283 15.988007 8.747559 22.921555c4.3060303 6.933563 14.571777 10.200287 17.088684 18.67978c2.5169067 8.479492 1.3247681 23.783691 -1.9871216 32.197174c-3.3119507 8.413513 -14.836975 12.321777 -17.884277 18.283752c-3.0473022 5.9620056 -2.12146 15.103302 -0.3994751 17.48819c1.7219238 2.3849182 6.6903687 -3.576477 10.731201 -3.178711c4.0408936 0.3977661 10.267456 0.6409607 13.513916 5.5653687c3.24646 4.924408 5.6331177 15.612213 5.964905 23.98114c0.3317871 8.3688965 -1.4567871 19.475311 -3.9743042 26.2323c-2.517456 6.756958 -8.082825 10.0694275 -11.130737 14.309448c-3.0478516 4.2400513 -3.1156006 7.752289 -7.156433 11.130768c-4.0408936 3.378479 -13.445618 5.761627 -17.088684 9.140137c-3.6431274 3.378479 -2.7821045 10.534363 -4.7698364 11.130737c-1.9877319 0.5963745 -5.2353516 -3.7762756 -7.156494 -7.5525208c-1.9211426 -3.776245 -2.9129639 5.564209 -4.3703003 -15.105011c-1.4573364 -20.66925 -1.6576538 -82.54434 -4.3737793 -108.9104c-2.7161255 -26.366028 -7.2855835 -37.22928 -11.922852 -49.28586c-4.637207 -12.05658 -9.474182 -12.520355 -15.900513 -23.053574c-6.4263916 -10.533218 -16.165192 -31.931412 -22.657562 -40.14572c-6.49234 -8.21431 -11.791962 -8.941544 -16.2966 -9.140137c-4.5046387 -0.19859314 -6.756958 3.84169 -10.731232 7.9485474c-3.9742737 4.1068726 -8.742371 11.98941 -13.11441 16.692642c-4.3720703 4.703247 -7.751709 8.611511 -13.117889 11.526794c-5.366211 2.915268 -17.35675 6.6272583 -19.079285 5.9648743c-1.7225342 -0.6623688 7.419342 -6.2954865 8.74408 -9.939148c1.3247681 -3.6436768 0.99298096 -8.676941 -0.7955322 -11.922821c-1.7885437 -3.2458954 -5.49765 -4.9690094 -9.935699 -7.5525208c-4.4380493 -2.5835114 -11.459045 -4.2388763 -16.692657 -7.9485474c-5.2335815 -3.709671 -10.80011 -11.924561 -14.708954 -14.3094635c-3.9088745 -2.3849182 -7.2867737 -2.1197357 -8.74411 0c-1.4573364 2.1197205 2.1863098 8.21373 0 12.718369c-2.1863098 4.5046387 -9.275635 11.725967 -13.117889 14.3094635c-3.8422546 2.5835114 -9.207306 1.5893707 -9.935669 1.1915894c-0.72839355 -0.3977661 3.5776367 -1.391922 5.5653687 -3.5782318c1.9877014 -2.1863098 5.3007507 -5.96257 6.360901 -9.539642c1.0601807 -3.5770874 0.7289734 -9.008133 0 -11.922821c-0.7289429 -2.9147034 -0.067718506 -3.4456482 -4.3737793 -5.565384c-4.3060303 -2.1197205 -13.910522 -4.37088 -21.462463 -7.153c-7.551941 -2.7821045 -15.391632 -5.8299713 -23.849121 -9.539642c-8.457489 -3.709671 -20.955841 -9.671082 -26.895813 -12.718369c-5.9400024 -3.047287 -6.359192 -6.426346 -8.74411 -5.5653687c-2.3849182 0.8609772 -2.0542908 6.756378 -5.5653687 10.731232c-3.511078 3.9748535 -11.393616 10.666962 -15.501068 13.117874c-4.1074524 2.4509277 -1.7236938 -1.3270721 -9.1436 1.5876312c-7.419922 2.9147034 -30.60608 11.395935 -35.3759 15.900574c-4.769821 4.5046387 3.2458801 10.199707 6.756958 11.127274c3.5110626 0.92755127 10.798401 -2.1174164 14.3094635 -5.561905c3.511078 -3.4444885 5.432205 -14.707245 6.7569733 -15.105026c1.3247528 -0.3977661 2.0525513 8.213745 1.1915741 12.718384c-0.8609772 4.5046387 -1.8527985 10.202026 -6.357437 14.3094635c-4.5046387 4.1074524 -13.648254 9.010437 -20.670395 10.335205c-7.022156 1.3247528 -15.566483 -0.2003479 -21.462479 -2.3866577c-5.895981 -2.1863098 -10.26976 -9.406479 -13.913422 -10.731232c-3.6436768 -1.3247528 -8.279739 -0.46377563 -7.9485474 2.7826843c0.33117676 3.2464752 5.563629 11.5290985 9.935684 16.696121c4.37204 5.1670227 13.1167145 8.609192 16.2966 14.306c3.1798859 5.696808 3.6436615 12.653519 2.7826843 19.874847c-0.8609772 7.2213135 -5.4316254 16.894714 -7.9485474 23.453064c-2.516922 6.55838 -5.8942413 10.664093 -7.153 15.897095c-1.2587433 5.233032 -2.320633 10.797241 -0.39950562 15.501068c1.9211273 4.703827 11.131317 8.61441 11.9263 12.721832c0.79496765 4.1074524 -2.3200684 7.4181824 -7.156479 11.922852c-4.8364105 4.5046387 -14.11145 12.587494 -21.861984 15.105011c-7.750519 2.5174866 -20.003952 -2.3849182 -24.64119 0c-4.6372375 2.3849182 -2.8510132 9.341034 -3.1822052 14.309479c-0.33117676 4.9684143 2.5198212 8.832672 1.1950684 15.501038c-1.3247528 6.668396 -7.0233 17.111847 -9.143616 24.509186c-2.1203003 7.397339 -4.5057983 15.767395 -3.5782318 19.874847c0.9275665 4.1074524 5.8971405 1.3247681 9.143616 4.7698364c3.24646 3.4450378 7.7516785 9.584808 10.33519 15.900543c2.5835114 6.3157654 4.9012604 14.354065 5.165863 21.994019c0.26460266 7.639923 -1.1933289 18.811218 -3.5782318 23.845642c-2.3849182 5.034424 -6.9555664 6.625519 -10.731232 6.360901c-3.7756805 -0.2645874 -7.8819733 -4.238861 -11.922836 -7.9485474c-4.0408554 -3.7096558 -9.341042 -9.672241 -12.322327 -14.309448c-2.981285 -4.6372375 -3.842842 -12.05658 -5.5653763 -13.513947c-1.7225266 -1.4573364 -3.6436615 5.2996216 -4.769821 4.7698364c-1.1261597 -0.52978516 0.2651825 -3.5759277 -1.9871368 -7.9485474c-2.2523193 -4.3726196 -5.829399 -11.596252 -11.526787 -18.287231c-5.69738 -6.6909485 -15.23819 -17.61905 -22.657524 -21.85849c-7.419342 -4.2394714 -16.161705 -4.1740417 -21.85851 -3.578247c-5.696808 0.5957947 -9.208458 3.7085266 -12.322334 7.153015c-3.1138763 3.4444885 -4.704399 8.478912 -6.360924 13.513916c-1.6565266 5.0350037 -3.2470474 8.878998 -3.5782356 16.696106c-0.3311901 7.8171387 0.39835358 23.27301 1.5910988 30.206573c1.1927452 6.933563 -1.3241787 -0.44119263 5.5653725 11.394775c6.889553 11.835968 27.491047 47.8291 35.771942 59.621033c8.280891 11.791992 9.872574 7.420532 13.913429 11.130798c4.040863 3.710205 6.953247 6.360901 10.331726 11.130737c3.378479 4.7698364 6.3615036 13.513916 9.939156 17.48816c3.5776596 3.9743042 7.817116 6.291443 11.526787 6.357483c3.709671 0.065979004 7.534561 -4.3622437 10.731232 -5.961426c3.1966705 -1.5991821 7.4621887 -13.285217 8.448807 -3.63385z"
+          fill-rule="evenodd" />
+      </svg>
+      <div class="item">
+        <h3>Discovery</h3>
+        <p>The German chemist <strong>Carl Wilhelm Scheele</strong> first identified barium as a new element in 1774 by
+          studying the mineral barite, which is composed mostly of barium sulfate. <strong>Sir Humphrey Davy</strong>
+          first isolated barium in 1808 using electrolysis.</p>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <div class="item">
+        <h3>Use case:<br>
+          Modified barium swallow</h3>
+        <p>A modified barium swallow (MBS) is a type of X-ray imaging test that <strong>doctors and speech-langauge
+            pathologists</strong> use to test swallowing ability. An MBS is used to diagnose swallowing problems and to
+          track rehabilitation of patients after a stroke.</p>
+        <p>During the test, the patient ingests a variety of liquids and foods mixed with barium sulfate.
+          As the substance passes through the esophagus, it is picked up by the X-ray scanner due to its radiodensity,
+          and doctors are able to determine whether the patient is able to swallow normally <strong>(HealthcareHeroesTV,
+            2010)</strong>.</p>
+        <p>My mom, a speech language pathologist, has used this test to help stroke patients regain their ability to eat
+          and drink safely.</p>
+      </div>
+      <div class="item">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/xDGg3djm1Es?si=rJwm8zeSPZbpapAT"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <div class="item">
+        <img style="width: 40vw;" src="https://upload.wikimedia.org/wikipedia/commons/8/85/Refraction_photo.png">
+      </div>
+      <div class="wide-item">
+        <h3>Use case:<br>
+          Baryta glass</h3>
+        <p>Baryta glass is standard silica glass with barium oxide added. Its high refraction index makes it great for
+          use in <strong>high-precision lenses in cameras, telescopes, and high-prescription glasses</strong>. It is
+          also scratch-resistant and has good mechanical strength <strong>(What is baryta glass)</strong>. However, the
+          production process can be dangerous, because pure barium is a soluble toxin that can easily leak into other
+          fluids. Barium poisining in water due to glass production is not unheard of.</p>
+        <p></p>
+      </div>
+    </div>
+
+    <div class="item">
+      <h2><span class="blue">SOCIETAL ISSUE:</span><br>
+        BARIUM CHLORIDE IN WATER PURIFICATION
+      </h2>
+      <p>Barium chloride is used for purifying water by removing harmful sulfate and phosphate ions. This is an
+        essential process for both industrial and drinking water.</p>
+      <p>Since barium is highly reactive, it readily forms an insoluble precipitate with negative ions, which can be
+        easily filtered out. This process benefits both public health and the environment by reducing the amount of
+        toxic substances in the water, preventing damage to plumbing and aquatic life. Economically, it supports
+        industries that rely on clean water, like food production and manufacturing. However, there are risks associated
+        with the use of barium — soluble barium compounds can be toxic and can lead to water poisoning if not handled
+        properly, which poses health risks to human factory workers and the environment alike <strong>(Barium
+          chloride)</strong>.</p>
+    </div>
+
+    <div class="references">
+      <h3>References</h3>
+      <p>Barium chloride [Fact sheet]. (n.d.). National Center for Biotechnology Information. Retrieved October 28, 2025, from https://pubchem.ncbi.nlm.nih.gov/compound/Barium-chloride</p>
+      <p>HealthcareHeroesTV. (2010, April 28). Swallow study [Video]. YouTube. https://www.youtube.com/watch?v=xDGg3djm1Es</p>
+      <p>What is baryta glass? (n.d.). Lens.com. Retrieved October 28, 2025, from https://www.lens.com/glossary/what-is-baryta-glass/</p>
+    </div>
+
+  </div>
+
+</body>
+
+</html>

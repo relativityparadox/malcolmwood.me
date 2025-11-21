@@ -8,10 +8,14 @@
   --medium-72: #05445972;           /* navbar bg */
   --medium-af: #054459af;           /* navbar bg (hover) */
   --bright: #42d1ff;                /* links, buttons */
-  --bright-45: #42d1ff45;           /* card */
+  --bright-45: #42d1ff45;           
   --light: #5191a6;                 /* secondary text, mobile navbar divider */
+  --indigo: #6b5fbf;                /* accent color */
+  --indigo-45: #6b5fbf45;           
   --red: #eb4034;                   /* active links & buttons */
-  --red-45: #eb403445;              /* card bg */
+  --red-45: #eb403445;              
+  --sage: #7bbf6a;                  /* accent color */
+  --sage-45: #7bbf6a45;             
   --dark-gray: #6c8a94;             /* captions */
   --gray: #9eb8c0;                  /* scrollbar thumb (if supported) */
   --white: #ffffff;                 /* text, button hover */
@@ -37,6 +41,15 @@ body {
 
 /* GLOBAL STYLES */
 
+main {
+  background-color: var(--almost-black);
+}
+
+.content {
+  width: 70vw;
+  margin: 0 auto 40px auto;
+}
+
 h1 {
   margin: 0;
   padding: 100px 0 10px 0;
@@ -57,7 +70,8 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 30px 0 10px 0;
+  margin: 0;
+  padding: 30px 0 10px 0;
 }
 
 .subtitle {
@@ -65,8 +79,30 @@ h6 {
   color: var(--light);
 }
 
+.info-grid-3 {
+  display: grid;
+  margin-top: 40px;
+  grid-template-columns: auto auto auto;
+  gap: 40px;
+}
+
+.info-grid-3 h1, .info-grid-3 h2, .info-grid-3 .subtitle {
+  padding: 0 0 10px 0;
+  text-align: left;
+}
+
+.span-2 {
+  grid-column: span 2;
+}
+
 .text {
   padding-top: 10px;
+  font-size: 1em;
+  line-height: 1.45em;
+}
+
+.text.small {
+  font-size: 0.8em;
 }
 
 a {
@@ -109,6 +145,11 @@ a:hover .link-chevron {
   transform: translateX(5px);
 }
 
+.content img {
+  border-radius: 14px;
+  object-fit: cover;
+}
+
 .caption {
   font-size: 0.8em;
   color: var(--dark-gray);
@@ -127,8 +168,8 @@ a:hover .link-chevron {
 button {
   margin: 20px;
   padding: 8px 20px;
-  border: 1px solid #054459;
-  border-radius: 10px;
+  border: 1px solid var(--medium);
+  border-radius: 14px;
   background-color: var(--bright);
   font-family: inherit;
   font-size: 0.9em;
@@ -137,8 +178,8 @@ button {
 }
 
 button:hover {
-  background-color: #fff;
-  color: #054459;
+  background-color: var(--white);
+  color: var(--medium-dark);
   cursor: pointer;
   border-radius: 6px;
 }
@@ -183,7 +224,7 @@ textarea::placeholder {
   border-radius: 4px;
 }
 
-/* NAVBAR, HERO, CONTENT, FOOTER */
+/* NAVBAR, FOOTER */
 
 .top {
   font-size: 1px;
@@ -212,12 +253,6 @@ textarea::placeholder {
   background-color: var(--medium-af);
 }
 
-.nav-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
 .nav-logo {
   display: none;
   margin-left: 14px;
@@ -243,6 +278,11 @@ textarea::placeholder {
   cursor: pointer;
 }
 
+.nav-toggle:hover {
+    background-color: var(--white-33);
+    border-radius: 8px;
+  }
+
 .nav-links ul {
   margin: 0;
   padding: 0;
@@ -266,35 +306,6 @@ textarea::placeholder {
   color: var(--red);
 }
 
-main {
-  background-color: var(--almost-black);
-}
-
-.content {
-  width: 70vw;
-  margin: 0 auto 40px auto;
-}
-
-.content img {
-  border-radius: 14px;
-  object-fit: cover;
-}
-
-.contact-form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0 50px;
-}
-
-.submit {
-  grid-column: 1 / span 2;
-}
-
-.submit:active {
-  background-color: var(--red);
-  color: var(--almost-black);
-}
-
 .footer {
   margin-top: auto;
   padding: 20px;
@@ -303,6 +314,10 @@ main {
   font-size: 0.8em;
   text-align: center;
 }
+
+/* SPECIFIC STYLES */
+
+/* /index.html */
 
 .hero {
   position: relative;
@@ -364,8 +379,6 @@ main {
   transform: scale(1.4);
 }
 
-/* SPECIFIC STYLES */
-
 /* /404.html */
 
 .error-404-illustration {
@@ -375,6 +388,24 @@ main {
   height: auto;
   display: block;
   margin: 0 auto;
+}
+
+/* /contact.html */
+/* these styles not currently in use; no contact form on page */
+
+.contact-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 50px;
+}
+
+.submit {
+  grid-column: 1 / span 2;
+}
+
+.submit:active {
+  background-color: var(--red);
+  color: var(--almost-black);
 }
 
 /* /projects.html */
@@ -389,10 +420,11 @@ main {
 .project-card {
   padding: 20px;
   border-radius: 20px;
+  min-width: 25vw;
 }
 
 .project-card h3 {
-  margin: 5px 0 0 0;
+  padding: 5px 0 0 0;
 }
 
 .project-card.malcolmwood-me {
@@ -404,26 +436,47 @@ main {
   color: var(--red);
 }
 
-.project-card.unfinished-repos .subtitle {
-  color: var(--bright)
-}
-
 .project-card.unfinished-repos {
   background-color: var(--bright-45);
   border: 1px solid var(--bright);
 }
 
-.about-website-card {
-  height: calc(100vh - 180px);
-  max-height: 120vw;
-  margin-top: 85px;
-  padding: 40px;
-  border-radius: 14px;
-  background-image: url(/assets/images/code.jpeg);
-  background-size: cover;
+.project-card.unfinished-repos .subtitle {
+  color: var(--bright);
+}
+
+.project-card.for-president {
+  background-color: var(--indigo-45);
+  border: 1px solid var(--indigo);
+}
+
+.project-card.for-president .subtitle {
+  color: var(--indigo);
+}
+
+.project-card.barium-project {
+  background-color: var(--sage-45);
+  border: 1px solid var(--sage);
+}
+
+.project-card.barium-project .subtitle {
+  color: var(--sage);
 }
 
 /* /projects/malcolmwood.me.html */
+
+.about-website-card {
+  margin-top: 85px;
+  padding: 40px;
+  border-radius: 14px;
+  background-image: url(/assets/images/about-website-banner.png);
+  background-size: cover;
+  background-position: right;
+}
+
+.about-website-card *:first-child {
+  padding: calc(0.5 * calc(100vh - 300px)) 0 0 0;
+}
 
 .about-website-card h1 {
   margin: 0;
@@ -431,16 +484,16 @@ main {
   font-size: clamp(2em, calc(3vh + 3vw), 4em);
 }
 
-.about-website-card:first-child {
-  padding-top: calc(100vh - 400px);
-  overflow-y: hidden;
+.about-website-card .subtitle {
+  font-size: clamp(1em, calc(1.5vh + 1.5vw), 2em);
+  color: var(--white-cc);
+  font-weight: 450;
 }
 
-.about-website-card .text, .about-website-card h1 {
-  margin: 10px 0 0 0;
+ .about-website-card h1, .about-website-card .subtitle {
+  padding: 10px 0 0 0;
   text-align: left;
-  color: var(--almost-black);
-  text-shadow: 0 0 5px var(--white);
+  text-shadow: 0 0 5px var(--medium-dark);
 }
 
 /* MOBILE LAYOUT */
@@ -451,7 +504,7 @@ main {
     margin: 16px;
     padding: 14px;
     border-radius: 14px;
-    background-color: #05445972;
+    background-color: var(--medium-72);
   }
 
   @keyframes expandMenu {
@@ -505,7 +558,7 @@ main {
   .navbar {
     display: flex;
     align-items: center;
-    background-color: #054459af;
+    background-color: var(--medium-72);
   }
 
   .navbar.normal {
@@ -514,11 +567,6 @@ main {
 
   .nav-toggle {
     display: inline-flex;
-  }
-
-  .nav-toggle:hover {
-    background-color: #fff3;
-    border-radius: 8px;
   }
 
   @keyframes fixToggleExpand {
@@ -549,7 +597,7 @@ main {
     }
   }
 
-  /*make toggle not get skewed when navbar expands*/
+  /* make toggle not get skewed when navbar expands */
   .navbar.expanded .nav-toggle {
     animation: fixToggleExpand 0.4s;
   }
@@ -583,11 +631,29 @@ main {
 
   .nav-links a:hover {
     background-color: rgba(66, 209, 255, 0.06);
-    color: #42d1ff;
+    color: var(--bright);
   }
 
   .content {
     width: 90vw;
+  }
+
+  .content img {
+    width: 70vw;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+
+  .info-grid-3 {
+    grid-template-columns: auto;
+  }
+
+  .span-2 {
+    grid-column: span 1;
   }
 
   .hero-button-container {
@@ -597,9 +663,9 @@ main {
 
   .hero-button {
     width: calc(100vw - 32px);
-    background-color: #05445972;
+    background-color: var(--medium-72);
     backdrop-filter: blur(30px);
-    color: #fff;
+    color: var(--white);
   }
 
   .hero-button:first-child {
@@ -614,7 +680,7 @@ main {
     height: 0;
     width: calc(100% - 24px);
     margin: 0 auto;
-    outline: 1.25px solid #5191a6;
+    outline: 1.25px solid var(--light);
   }
 
   .project-card-wrapper {
@@ -622,8 +688,8 @@ main {
   }
 
   .about-website-card {
-    height: calc(100vh - 220px);
     margin-top: 100px;
     padding: 5vw;
+    background-position: center;
   }
 }

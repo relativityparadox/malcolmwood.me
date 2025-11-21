@@ -6,13 +6,16 @@ async function importLinks(url) {
     const htmlText = await response.text();
 
     const tempDoc = new DOMParser().parseFromString(htmlText, 'text/html');
-    const linkElements = tempDoc.querySelectorAll('link');
+    const linkElements = Array.from(tempDoc.querySelectorAll('link'));
 
-    linkElements.forEach(link => {
-      document.head.appendChild(link.cloneNode(true));
-    });
+    // Append all link elements immediately (no load-waiting). Simpler and
+    // sufficient for this site since critical CSS is inlined in the page heads.
+    linkElements.forEach(link => document.head.appendChild(link.cloneNode(true)));
+
+    return Promise.resolve();
   } catch (error) {
     console.error('Failed to import links:', error);
+    return Promise.resolve();
   }
 }
 
@@ -41,8 +44,18 @@ async function importDiv(id, filePath) {
 
 importLinks('/assets/universal-data.html');
 
-importDiv("universal-navbar", "/assets/universal-navbar.html");
-importDiv("universal-footer", "/assets/universal-footer.html");
+// After loading CSS from universal-data.html, import the universal divs and
+// remove the preload style (if present in the page head) so the page becomes visible.
+// Note: pages now include the inline preload style directly in the <head>, so
+// this script will only remove it rather than insert it.
+importLinks('/assets/universal-data.html').then(() => {
+  // Immediately import shared divs and remove the inline preload style if present.
+  importDiv("universal-navbar", "/assets/universal-navbar.html");
+  importDiv("universal-footer", "/assets/universal-footer.html");
+
+  const preload = document.getElementById('fouc-preload-style');
+  if (preload && preload.parentNode) preload.parentNode.removeChild(preload);
+});
 
 // MOBILE NAVBAR MENU TOGGLE
 window.addEventListener('universal-navbar-loaded', () => {

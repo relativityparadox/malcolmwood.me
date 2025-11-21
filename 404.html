@@ -11,6 +11,12 @@
 
 <body>
 
+  <style id="fouc-preload-style">
+    body {
+      visibility: hidden !important;
+      opacity: 0 !important
+    }
+  </style>
   <div id="universal-navbar" style="z-index: 1000;"></div>
 
   <main>
@@ -18,9 +24,12 @@
       <img class="error-404-illustration" src="/assets/images/error-404.svg" alt="Error 404 illustration">
       <h2>Error 404 — Page not found</h2>
       <div class="text centered">The page you're looking for does not exist or has been moved.</div>
-      <button class="centered-block">Return to homepage</button>
-      <div class="text centered">If you clicked a link that brought you here, let me know by taking a few seconds to <a href="/contact">submit feedback</a>.</div>
-      <div class="text centered">Or check out <a href="https://www.wired.com/story/page-not-found-a-brief-history-of-the-404-error/">this intriguing article</a> about the origin and history of 404 errors.</div>
+      <button class="centered-block" onclick="window.location.href='/'">Return to homepage</button>
+      <div class="text centered">If you clicked a link that brought you here, let me know by taking a few seconds to <a
+          href="/contact">submit feedback</a>.</div>
+      <div class="text centered">Or check out <a
+          href="https://www.wired.com/story/page-not-found-a-brief-history-of-the-404-error/">this intriguing
+          article</a> about the origin and history of 404 errors.</div>
     </div>
   </main>
 
